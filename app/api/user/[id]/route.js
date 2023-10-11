@@ -1,6 +1,6 @@
-import connectDB from "../../../utils/lib/dbConnect";
+import connectDB from "@/app/utils/lib/dbConnect";
 import { NextResponse } from "next/server";
-import { UserModel } from "@/utils/models/User";
+import { UserModel } from "@/app/utils/models/User";
 import authMiddleware from "../../../utils/lib/authMiddleware";
 
 

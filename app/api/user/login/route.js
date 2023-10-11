@@ -1,5 +1,5 @@
-import connectDB from "../../../utils/lib/dbConnect";
-import { UserModel } from "@/utils/models/User";
+import connectDB from "@/app/utils/lib/dbConnect";
+import { UserModel } from "@/app/utils/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";

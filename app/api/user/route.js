@@ -1,9 +1,8 @@
-import connectDB from "../../utils/lib/dbConnect";
+import connectDB from "@/app/utils/lib/dbConnect";
 import { NextResponse } from "next/server";
-import { UserModel } from "@/utils/models/User";
-import bcrypt from "bcryptjs";
+import { UserModel } from "@/app/utils/models/User";
 import jwt from "jsonwebtoken";
-import authMiddleware from "../../utils/lib/authMiddleware";
+import authMiddleware from "@/app/utils/lib/authMiddleware";
 
 export const POST = async (req, res) => {
     await connectDB();

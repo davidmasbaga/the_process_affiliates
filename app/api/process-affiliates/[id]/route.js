@@ -1,6 +1,6 @@
-import connectDB from "../../../utils/lib/dbConnect";
+import connectDB from "@/app/utils/lib/dbConnect";
 import { NextResponse } from "next/server";
-import { AffiliateModel } from "@/utils/models/Affiliate";
+import { AffiliateModel } from "@/app/utils/models/Affiliate";
 import authMiddleware from "../../../utils/lib/authMiddleware";
 
 
