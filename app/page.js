@@ -36,13 +36,14 @@ export default function Home() {
       return;
     }
 
-    setPreviouslySelectedIDs(prevIDs => [...prevIDs, firstIdChoosen]);
     const currentAffiliateID = getNewUser();
+    setPreviouslySelectedIDs(prevIDs => [...prevIDs, currentAffiliateID]);
     setFirstIdChoosen(currentAffiliateID);
     setFirstIdChoosenEncrypted(encryptID(currentAffiliateID));
     setConvertedURL(convertToAffiliateURL(url, currentAffiliateID));
     setIsConverting(false);
   };
+
   return (
     <div style={{ 
       display: 'flex', 
@@ -80,6 +81,7 @@ export default function Home() {
             border: '1px solid #ccc',
             width: '100%'
           }}
+          disabled={convertedURL} 
         />
 
         <div className='flex gap-2 justify-end'>
