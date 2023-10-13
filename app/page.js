@@ -106,7 +106,10 @@ export default function Home() {
   
 </button>
           <button 
-            onClick={() => window.open(convertedURL, '_blank')}
+             onClick={() => {
+        console.log(`Clic hacia ${convertedURL}`);
+        window.open(convertedURL, '_blank');
+    }}
             disabled={!convertedURL}
             style={{
               padding: '10px 15px',
