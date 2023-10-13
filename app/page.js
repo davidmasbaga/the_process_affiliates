@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { convertToAffiliateURL } from './utils/lib/affiliate';
 import Image from 'next/image';
 import data from './data/affiliates.json';
-import VercelConsole from './utils/lib/vercelLog';
+
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 const isAmazonURL = (url) => url.includes('amazon.'); 
@@ -45,7 +45,7 @@ export default function Home() {
     setIsConverting(false);
   };
 
-  VercelConsole.warn('hello world')
+ 
 
   return (
     <div style={{ 
