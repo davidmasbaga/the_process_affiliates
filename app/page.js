@@ -1,12 +1,13 @@
 'use client';
 import { useState } from 'react';
-import { convertToAffiliateURL } from './utils/lib/affiliate';
+import { convertToAffiliateURL, expandirUrl } from './utils/lib/affiliate';
 import Image from 'next/image';
 import data from './data/affiliates.json';
 
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
-const isAmazonURL = (url) => url.includes('amazon.'); 
+const isAmazonURL = (url) => url.includes('amazon.') || url.includes('amzn');
+
 const encryptID = (text) => {
   const unmaskedLength = Math.ceil(text.length / 2);
   return text.substring(0, unmaskedLength) + '*'.repeat(text.length - unmaskedLength);
@@ -27,7 +28,7 @@ export default function Home() {
     return affiliatesList[getRandomInt(affiliatesList.length)].affiliateCode;
   };
 
-  const handleConversion = () => {
+  const handleConversion = async () => {
     setError('');
     setIsConverting(true);
 
@@ -36,6 +37,18 @@ export default function Home() {
       setIsConverting(false);
       return;
     }
+    
+    if (url.includes('amzn.to')) {
+      const expandedURL = await expandirUrl(url);
+      if (expandedURL) {
+          setURL(expandedURL); // Actualiza la URL con la URL expandida
+      } else {
+          setError('Error al expandir la URL.');
+          setIsConverting(false);
+          return;
+      }
+  }
+    
 
     setPreviouslySelectedIDs(prevIDs => [...prevIDs, firstIdChoosen]);
     const currentAffiliateID = getNewUser();
